@@ -5,7 +5,7 @@ import path from "path";
 import matter from "gray-matter";
 
 /**
- * /console 后台 API —— 列出全部内容（含草稿），供后台管理列表使用。
+ * /console 后台 API —— 列出全部内容（含草稿与 JSON 数据文件内容），供后台管理/编辑/删除使用。
  */
 
 export const runtime = "nodejs";
@@ -13,6 +13,7 @@ export const dynamic = "force-dynamic";
 
 const blogDir = path.join(process.cwd(), "content", "blog");
 const notesDir = path.join(process.cwd(), "content", "notes");
+const dataDir = path.join(process.cwd(), "content");
 
 function authorize(request: Request): boolean {
   const token = process.env.CONSOLE_TOKEN;
@@ -55,9 +56,26 @@ export async function GET(request: Request) {
     }
   }
 
+  // JSON 数据文件内容（编辑回填用；缺失返回 null）
+  async function readDataFile(name: string): Promise<unknown | null> {
+    try {
+      return JSON.parse(await fs.readFile(path.join(dataDir, name), "utf8"));
+    } catch {
+      return null;
+    }
+  }
+  const [nowData, projectsData, aboutData] = await Promise.all([
+    readDataFile("now.json"),
+    readDataFile("projects.json"),
+    readDataFile("about.json"),
+  ]);
+
   return NextResponse.json({
     posts: posts.map((p) => ({ slug: p.slug, title: p.title, publishedAt: p.publishedAt, tags: p.tags })),
     notes: notes.map((n) => ({ slug: n.slug, createdAt: n.createdAt, excerpt: n.content.slice(0, 50) })),
     drafts,
+    now: nowData,
+    projects: projectsData,
+    about: aboutData,
   });
 }

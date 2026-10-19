@@ -200,3 +200,96 @@
   color: var(--yoyo-muted-foreground);
   font-size: 14px;
 }
+
+.yoyo-console-linkbtn {
+  border: none;
+  background: none;
+  color: var(--yoyo-primary);
+  cursor: pointer;
+  font: inherit;
+  text-decoration: underline;
+  padding: 0;
+}
+
+/* ---- 行内操作按钮（编辑/删除） ---- */
+.yoyo-console-item-actions {
+  display: flex;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.yoyo-console-item-actions button,
+.yoyo-console-del,
+.yoyo-console-add {
+  padding: 4px 12px;
+  border: 1px solid var(--yoyo-border);
+  border-radius: var(--yoyo-radius-medium);
+  background: var(--yoyo-card);
+  color: var(--yoyo-muted-foreground);
+  font-size: 12px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color var(--yoyo-transition-fast), border-color var(--yoyo-transition-fast);
+}
+
+.yoyo-console-item-actions button:hover,
+.yoyo-console-del:hover {
+  color: var(--yoyo-primary);
+  border-color: var(--yoyo-primary-300);
+}
+
+.yoyo-console-item-actions button[data-danger]:hover {
+  color: var(--state-error);
+  border-color: var(--state-error);
+}
+
+.yoyo-console-add {
+  align-self: flex-start;
+  padding: 8px 20px;
+  font-size: 13px;
+  color: var(--yoyo-primary);
+  border-color: var(--yoyo-primary-300);
+}
+
+.yoyo-console-add:hover {
+  background: var(--yoyo-primary);
+  color: var(--yoyo-primary-foreground);
+}
+
+/* 编辑中的列表项 */
+.yoyo-console-items li[data-editing="true"] {
+  background: rgba(var(--yoyo-primary-rgb, 0, 0, 0), 0.04);
+  border-radius: var(--yoyo-radius-medium);
+}
+
+/* ---- Now / Projects 行编辑 ---- */
+.yoyo-console-row[data-now-row] {
+  align-items: flex-end;
+}
+
+.yoyo-console-row[data-align-end] {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.yoyo-console-del {
+  flex-shrink: 0;
+  margin-bottom: 2px;
+}
+
+.yoyo-console-card {
+  border: 1px solid var(--yoyo-border);
+  border-radius: var(--yoyo-radius-medium);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+}
+
+.yoyo-console-card legend {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--yoyo-muted-foreground);
+  padding: 0 8px;
+}
