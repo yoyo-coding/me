@@ -74,3 +74,137 @@
     transform: none;
   }
 }
+
+/* ============================================
+   友情链接
+   ============================================ */
+
+.yoyo-friend-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 12px;
+}
+
+.yoyo-friend-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--yoyo-border);
+  border-radius: var(--yoyo-radius-medium);
+  background: var(--yoyo-card);
+  text-decoration: none;
+  transition: border-color var(--yoyo-transition-fast), transform var(--yoyo-transition-fast);
+}
+
+.yoyo-friend-card:hover {
+  border-color: var(--yoyo-primary-300);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yoyo-friend-card:hover {
+    transform: none;
+  }
+}
+
+.yoyo-friend-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--yoyo-radius-medium);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.yoyo-friend-avatar-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--yoyo-primary);
+  color: var(--yoyo-primary-foreground);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.yoyo-friend-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.yoyo-friend-name {
+  font-weight: 600;
+  font-size: var(--yoyo-text-sm);
+  color: var(--yoyo-foreground);
+}
+
+.yoyo-friend-desc {
+  font-size: 12px;
+  color: var(--yoyo-muted-foreground);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.yoyo-friend-apply {
+  margin-top: 12px;
+  font-size: var(--yoyo-text-sm);
+  color: var(--yoyo-muted-foreground);
+}
+
+.yoyo-friend-apply-link {
+  color: var(--yoyo-primary);
+  text-decoration: none;
+}
+
+.yoyo-friend-apply-link:hover {
+  text-decoration: underline;
+}
+
+/* ---- 申请友链教程 ---- */
+.yoyo-friend-apply-section {
+  scroll-margin-top: 80px;
+  border: 1px solid var(--yoyo-border);
+  border-radius: var(--yoyo-radius-medium);
+  padding: 20px;
+}
+
+.yoyo-friend-steps {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: var(--yoyo-text-sm);
+  color: var(--yoyo-muted-foreground);
+}
+
+.yoyo-friend-steps strong {
+  color: var(--yoyo-foreground);
+}
+
+.yoyo-friend-code {
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--yoyo-muted);
+  font-family: var(--yoyo-font-mono);
+  font-size: 12px;
+  color: var(--yoyo-foreground);
+}
+
+.yoyo-friend-template {
+  margin: 8px 0;
+  padding: 12px;
+  border: 1px solid var(--yoyo-border);
+  border-radius: var(--yoyo-radius-medium);
+  background: var(--yoyo-muted);
+  font-family: var(--yoyo-font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-x: auto;
+  color: var(--yoyo-foreground);
+}
