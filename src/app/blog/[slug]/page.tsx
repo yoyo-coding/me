@@ -7,14 +7,17 @@ import { ReadingAids } from "@/components/reading-aids";
 import { TableOfContents } from "@/components/toc";
 
 export const dynamic = "force-static";
+// 文章列表为空时仍保留 generateStaticParams 的合法导出（output: export 要求）
+export const dynamicParams = false;
 
 interface PostPageProps {
   params: Promise<{ slug: string }>;
 }
 
-/** 静态生成所有文章路由 */
+/** 静态生成所有文章路由（无文章时返回占位条目，保证 export 构建通过） */
 export async function generateStaticParams() {
   const posts = await getAllBlogPosts();
+  if (posts.length === 0) return [{ slug: "__placeholder__" }];
   return posts.map((post) => ({ slug: post.slug }));
 }
 
