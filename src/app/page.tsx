@@ -2,7 +2,6 @@ import { getAllBlogPosts, getAllNotes } from "@/lib/content";
 import {
   AboutSection,
   BlogSection,
-  GithubSection,
   Hero,
   NotesSection,
   NowSection,
@@ -26,7 +25,6 @@ export default async function HomePage() {
       <BlogSection posts={posts} />
       <NotesSection notes={notes} />
       <NowSection />
-      <GithubSection />
       <AboutSection />
     </>
   );
