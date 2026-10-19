@@ -1,0 +1,403 @@
+/* ============================================
+   首页（设计稿：首页.html page-styles）
+   ============================================ */
+
+/* ---- 首屏：仅头像 ---- */
+.yoyo-hero {
+  min-height: calc(100vh - 56px);
+  display: flex;
+  align-items: center;
+}
+
+.yoyo-hero-inner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  position: relative;
+}
+
+/* ---- 头像右侧的名字 ---- */
+.yoyo-hero-name {
+  margin: 0;
+  /* 左缘对齐导航 Home 左缘（.yoyo-content 内容区左缘 + 335.63px 实测偏移） */
+  position: absolute;
+  left: calc(50% - 480px + 335.63px);
+  top: 50%;
+  /* 抬到头像上半部：字块底部正好落在头像直径延长线上（与圆心等高）。
+     top:50% 已把块顶放在圆心，因此直接 translateY(-100%) 把整块上移，
+     块底即圆心 = 直径延长线 */
+  transform: translateY(-100%);
+  font-family: var(--yoyo-font-serif);
+  font-size: clamp(38px, 4vw, 53.3px);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  color: var(--yoyo-foreground);
+  white-space: nowrap;
+}
+
+.yoyo-avatar {
+  /* 直径约为页面上下长度的 1/3（56px 为导航栏高度） */
+  width: calc((100vh - 56px) / 3);
+  height: calc((100vh - 56px) / 3);
+  min-width: 200px;
+  min-height: 200px;
+  border-radius: var(--yoyo-radius-full);
+  border: 2px solid var(--yoyo-border);
+  box-shadow: var(--yoyo-shadow-sm);
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- 欢迎语 ---- */
+.yoyo-welcome {
+  padding-top: 96px;
+}
+
+.yoyo-welcome-heading {
+  font-family: var(--yoyo-font-serif);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--yoyo-foreground);
+  margin: 0 0 16px;
+  text-wrap: balance;
+  word-break: keep-all;
+}
+
+.yoyo-welcome-sub {
+  font-size: var(--yoyo-text-lg);
+  color: var(--yoyo-muted-foreground);
+  line-height: var(--yoyo-leading-relaxed);
+  margin: 0;
+  max-width: 560px;
+}
+
+/* ---- Blog 列表 ---- */
+.yoyo-blog-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.yoyo-blog-featured {
+  display: block;
+  padding: 24px;
+  margin-bottom: 32px;
+  border: 1px solid var(--yoyo-border);
+  border-radius: var(--yoyo-radius-medium);
+  background: var(--yoyo-card);
+  transition: border-color var(--yoyo-transition-normal), box-shadow var(--yoyo-transition-normal);
+}
+
+.yoyo-blog-featured:hover {
+  border-color: var(--yoyo-primary-300);
+  box-shadow: var(--yoyo-shadow-hover);
+}
+
+.yoyo-blog-plain {
+  display: block;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--yoyo-border);
+}
+
+.yoyo-blog-list > .yoyo-blog-plain:first-of-type {
+  padding-top: 0;
+}
+
+.yoyo-blog-plain:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.yoyo-blog-title {
+  display: block;
+  text-decoration: none;
+  color: var(--yoyo-foreground);
+  font-size: var(--yoyo-text-xl);
+  font-weight: 600;
+  line-height: var(--yoyo-leading-normal);
+  margin: 0 0 8px;
+  transition: color var(--yoyo-transition-fast);
+}
+
+.yoyo-blog-title:hover {
+  color: var(--yoyo-primary);
+}
+
+.yoyo-blog-excerpt {
+  font-size: var(--yoyo-text-base);
+  color: var(--yoyo-muted-foreground);
+  line-height: var(--yoyo-leading-relaxed);
+  margin: 0 0 12px;
+}
+
+.yoyo-blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.yoyo-blog-meta time {
+  font-family: var(--yoyo-font-mono);
+  font-size: var(--yoyo-text-xs);
+  color: var(--yoyo-muted-foreground);
+}
+
+.yoyo-read-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 32px;
+  text-decoration: none;
+  color: var(--yoyo-primary);
+  font-size: var(--yoyo-text-sm);
+  font-weight: 500;
+  transition: color var(--yoyo-transition-fast), transform var(--yoyo-transition-fast);
+}
+
+.yoyo-read-all:hover {
+  transform: translateX(2px);
+}
+
+/* ---- Notes 时间线 ---- */
+.yoyo-notes-timeline {
+  position: relative;
+  padding-left: 20px;
+  border-left: 1px solid var(--yoyo-border);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.yoyo-note-item {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.yoyo-note-item::before {
+  content: '';
+  position: absolute;
+  left: -25px;
+  top: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: var(--yoyo-radius-full);
+  background: var(--yoyo-primary);
+  border: 2px solid var(--yoyo-background);
+  box-sizing: content-box;
+}
+
+.yoyo-note-time {
+  font-family: var(--yoyo-font-mono);
+  font-size: var(--yoyo-text-xs);
+  color: var(--yoyo-muted-foreground);
+  white-space: nowrap;
+  min-width: 96px;
+}
+
+.yoyo-note-text {
+  font-size: var(--yoyo-text-base);
+  color: var(--yoyo-foreground);
+  line-height: var(--yoyo-leading-relaxed);
+  margin: 0;
+}
+
+/* ---- Now ---- */
+.yoyo-now-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.yoyo-now-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: var(--yoyo-text-base);
+  line-height: var(--yoyo-leading-normal);
+}
+
+.yoyo-now-label {
+  color: var(--yoyo-primary);
+  font-weight: 500;
+  white-space: nowrap;
+  min-width: 64px;
+}
+
+.yoyo-now-text {
+  color: var(--yoyo-foreground);
+}
+
+/* ---- GitHub 卡片 ---- */
+.yoyo-github-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.yoyo-github-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.yoyo-github-header svg {
+  color: var(--yoyo-foreground);
+  flex-shrink: 0;
+}
+
+.yoyo-github-username {
+  font-size: var(--yoyo-text-xl);
+  font-weight: 600;
+  color: var(--yoyo-foreground);
+}
+
+.yoyo-github-intro {
+  font-size: var(--yoyo-text-sm);
+  color: var(--yoyo-muted-foreground);
+  margin: 0;
+}
+
+.yoyo-github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  text-decoration: none;
+  color: var(--yoyo-primary);
+  font-size: var(--yoyo-text-sm);
+  font-weight: 500;
+  transition: color var(--yoyo-transition-fast), transform var(--yoyo-transition-fast);
+}
+
+.yoyo-github-link:hover {
+  transform: translateX(2px);
+}
+
+/* ---- About 摘要 ---- */
+.yoyo-about-text {
+  font-size: var(--yoyo-text-base);
+  color: var(--yoyo-muted-foreground);
+  line-height: var(--yoyo-leading-relaxed);
+  margin: 0;
+  max-width: 640px;
+}
+
+/* ---- 页面头（列表页通用） ---- */
+.yoyo-page-header {
+  padding-top: 48px;
+  padding-bottom: 16px;
+}
+
+.yoyo-page-title {
+  margin: 0 0 8px;
+}
+
+.yoyo-page-desc {
+  color: var(--yoyo-muted-foreground);
+  margin: 0;
+}
+
+/* ---- Blog 列表页：标签过滤 / 空状态 / 加载更多 ---- */
+.yoyo-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.yoyo-empty {
+  color: var(--yoyo-muted-foreground);
+  text-align: center;
+  padding: 48px 24px;
+  margin: 0;
+}
+
+.yoyo-load-more {
+  text-align: center;
+  padding: 32px 0;
+}
+
+.yoyo-load-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: var(--yoyo-primary);
+  font-size: var(--yoyo-text-sm);
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+  transition: color var(--yoyo-transition-fast), transform var(--yoyo-transition-fast);
+}
+
+.yoyo-load-more-btn:hover {
+  transform: translateX(2px);
+}
+
+/* ---- 404 页面 ---- */
+.yoyo-notfound {
+  padding-top: 96px;
+  padding-bottom: 96px;
+  text-align: center;
+}
+
+.yoyo-notfound-code {
+  font-family: var(--yoyo-font-mono);
+  font-size: var(--yoyo-text-5xl);
+  color: var(--yoyo-primary);
+  margin: 0 0 8px;
+  line-height: 1;
+}
+
+.yoyo-notfound-title {
+  font-size: var(--yoyo-text-2xl);
+  font-weight: 600;
+  color: var(--yoyo-foreground);
+  margin: 0 0 12px;
+}
+
+.yoyo-notfound-desc {
+  color: var(--yoyo-muted-foreground);
+  margin: 0 0 24px;
+}
+
+/* ---- 响应式 ---- */
+@media (max-width: 640px) {
+  .yoyo-note-item {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .yoyo-note-time {
+    min-width: auto;
+  }
+
+  .yoyo-now-item {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .yoyo-now-label {
+    min-width: auto;
+  }
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .yoyo-read-all:hover,
+  .yoyo-github-link:hover {
+    transform: none;
+  }
+}

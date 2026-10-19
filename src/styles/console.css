@@ -1,0 +1,202 @@
+/* ============================================
+   /console 内容管理台
+   ============================================ */
+
+.yoyo-console {
+  padding-top: 48px;
+  padding-bottom: 64px;
+}
+
+.yoyo-console-header {
+  margin-bottom: 32px;
+}
+
+.yoyo-console-title {
+  margin: 0 0 8px;
+  font-family: var(--yoyo-font-serif);
+  font-size: clamp(24px, 3vw, 32px);
+}
+
+.yoyo-console-desc {
+  color: var(--yoyo-muted-foreground);
+  margin: 0;
+}
+
+/* ---- 标签页 ---- */
+.yoyo-console-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.yoyo-console-tab {
+  padding: 8px 20px;
+  border: 1px solid var(--yoyo-border);
+  border-radius: var(--yoyo-radius-medium);
+  background: var(--yoyo-card);
+  color: var(--yoyo-muted-foreground);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color var(--yoyo-transition-fast), border-color var(--yoyo-transition-fast);
+}
+
+.yoyo-console-tab[data-active="true"] {
+  color: var(--yoyo-primary);
+  border-color: var(--yoyo-primary-300);
+}
+
+/* ---- 表单 ---- */
+.yoyo-console-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 720px;
+}
+
+.yoyo-console-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.yoyo-console-field > span {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--yoyo-muted-foreground);
+}
+
+.yoyo-console-field input,
+.yoyo-console-field textarea {
+  padding: 10px 12px;
+  border: 1px solid var(--yoyo-border);
+  border-radius: var(--yoyo-radius-medium);
+  background: var(--yoyo-card);
+  color: var(--yoyo-foreground);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: var(--yoyo-leading-normal);
+  resize: vertical;
+}
+
+.yoyo-console-field input:focus,
+.yoyo-console-field textarea:focus {
+  outline: 2px solid var(--yoyo-ring);
+  outline-offset: 1px;
+}
+
+.yoyo-console-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.yoyo-console-row .yoyo-console-field {
+  flex: 1;
+  min-width: 200px;
+}
+
+.yoyo-console-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--yoyo-muted-foreground);
+  cursor: pointer;
+}
+
+.yoyo-console-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.yoyo-console-submit {
+  padding: 10px 28px;
+  border: none;
+  border-radius: var(--yoyo-radius-medium);
+  background: var(--yoyo-primary);
+  color: var(--yoyo-primary-foreground);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity var(--yoyo-transition-fast);
+}
+
+.yoyo-console-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---- 状态提示 ---- */
+.yoyo-console-status {
+  margin-top: 20px;
+  padding: 12px 16px;
+  border-radius: var(--yoyo-radius-medium);
+  font-size: 14px;
+  max-width: 720px;
+}
+
+.yoyo-console-status[data-kind="ok"] {
+  background: rgba(58, 185, 122, 0.1);
+  color: var(--state-success);
+}
+
+.yoyo-console-status[data-kind="err"] {
+  background: rgba(232, 91, 91, 0.1);
+  color: var(--state-error);
+}
+
+/* ---- 内容列表 ---- */
+.yoyo-console-list {
+  margin-top: 48px;
+  max-width: 720px;
+}
+
+.yoyo-console-subtitle {
+  margin: 20px 0 8px;
+  font-size: 15px;
+}
+
+.yoyo-console-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.yoyo-console-items li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--yoyo-border);
+  font-size: 14px;
+}
+
+.yoyo-console-items li[data-draft] {
+  color: var(--yoyo-muted-foreground);
+  font-style: italic;
+}
+
+.yoyo-console-items a {
+  color: var(--yoyo-foreground);
+  text-decoration: none;
+}
+
+.yoyo-console-items a:hover {
+  color: var(--yoyo-primary);
+}
+
+.yoyo-console-items time {
+  font-family: var(--yoyo-font-mono);
+  font-size: 12px;
+  color: var(--yoyo-muted-foreground);
+  white-space: nowrap;
+}
+
+.yoyo-console-muted {
+  color: var(--yoyo-muted-foreground);
+  font-size: 14px;
+}

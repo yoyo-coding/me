@@ -1,0 +1,119 @@
+/* ============================================
+   博客文章详情页
+   ============================================ */
+
+/* ---- 布局：正文 + 右侧目录 ---- */
+.yoyo-post-layout {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 0;
+}
+
+.yoyo-post-header {
+  margin-bottom: 32px;
+}
+
+.yoyo-post-title {
+  font-family: var(--yoyo-font-sans);
+  font-size: var(--yoyo-text-3xl);
+  font-weight: 600;
+  line-height: var(--yoyo-leading-tight);
+  letter-spacing: -0.01em;
+  color: var(--yoyo-foreground);
+  margin: 0 0 12px;
+}
+
+.yoyo-post-desc {
+  font-size: var(--yoyo-text-lg);
+  color: var(--yoyo-muted-foreground);
+  line-height: var(--yoyo-leading-relaxed);
+  margin: 0 0 16px;
+}
+
+.yoyo-post-updated {
+  font-size: var(--yoyo-text-xs);
+  color: var(--yoyo-muted-foreground);
+}
+
+.yoyo-post-footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--yoyo-border);
+}
+
+.yoyo-post-footer .yoyo-read-all {
+  margin-top: 0;
+}
+
+/* ---- 目录（桌面端悬浮于正文右侧） ---- */
+.yoyo-toc {
+  display: none;
+  position: fixed;
+  top: 104px;
+  left: calc(50% + 392px);
+  width: 216px;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  font-size: var(--yoyo-text-xs);
+}
+
+.yoyo-toc-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--yoyo-muted-foreground);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+.yoyo-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.yoyo-toc li[data-level="3"] {
+  padding-left: 12px;
+}
+
+.yoyo-toc-link {
+  display: block;
+  padding: 4px 8px;
+  border-left: 2px solid var(--yoyo-border);
+  color: var(--yoyo-muted-foreground);
+  text-decoration: none;
+  line-height: var(--yoyo-leading-normal);
+  transition: color var(--yoyo-transition-fast), border-color var(--yoyo-transition-fast);
+}
+
+.yoyo-toc-link:hover {
+  color: var(--yoyo-foreground);
+}
+
+.yoyo-toc-link[data-active="true"] {
+  color: var(--yoyo-primary);
+  border-left-color: var(--yoyo-primary);
+}
+
+@media (min-width: 1240px) {
+  .yoyo-toc {
+    display: block;
+  }
+}
+
+/* ---- 无障碍：仅屏幕阅读器可见 ---- */
+.yoyo-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,83 @@
+/* ============================================
+   Projects 页面（设计稿：项目.html page-styles）
+   ============================================ */
+
+.yoyo-project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+  background: var(--yoyo-card);
+  border: 1px solid var(--yoyo-border);
+  border-radius: var(--yoyo-radius-medium);
+  transition: border-color var(--yoyo-transition-normal), box-shadow var(--yoyo-transition-normal);
+}
+
+.yoyo-project-card:hover {
+  border-color: var(--yoyo-primary-300);
+  box-shadow: var(--yoyo-shadow-hover);
+}
+
+.yoyo-project-name {
+  font-size: var(--yoyo-text-lg);
+  font-weight: 600;
+  color: var(--yoyo-foreground);
+  margin: 0;
+}
+
+.yoyo-project-desc {
+  font-size: var(--yoyo-text-sm);
+  color: var(--yoyo-muted-foreground);
+  margin: 0;
+  line-height: var(--yoyo-leading-relaxed);
+}
+
+.yoyo-project-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.yoyo-project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  align-self: flex-start;
+  text-decoration: none;
+  color: var(--yoyo-primary);
+  font-size: var(--yoyo-text-sm);
+  font-weight: 500;
+  margin-top: 8px;
+  transition: transform var(--yoyo-transition-fast);
+}
+
+.yoyo-project-link:hover {
+  transform: translateX(2px);
+}
+
+.yoyo-project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 640px) {
+  .yoyo-project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yoyo-project-link:hover {
+    transform: none;
+  }
+}
+
+/* ---- Notes 标签（详情行内） ---- */
+.yoyo-note-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}

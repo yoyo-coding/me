@@ -1,0 +1,76 @@
+/* ============================================
+   About 页面（设计稿：关于.html page-styles）
+   ============================================ */
+
+.yoyo-about-layout {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 0;
+}
+
+.yoyo-about-heading {
+  font-family: var(--yoyo-font-serif);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--yoyo-foreground);
+  margin: 0 0 24px;
+}
+
+.yoyo-about-section {
+  margin-bottom: 48px;
+}
+
+.yoyo-about-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--yoyo-muted-foreground);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+}
+
+.yoyo-about-text {
+  font-size: var(--yoyo-text-base);
+  color: var(--yoyo-foreground);
+  line-height: var(--yoyo-leading-relaxed);
+  margin: 0 0 16px;
+}
+
+.yoyo-about-text-muted {
+  font-size: var(--yoyo-text-base);
+  color: var(--yoyo-muted-foreground);
+  line-height: var(--yoyo-leading-relaxed);
+  margin: 0 0 16px;
+}
+
+.yoyo-about-text-muted:last-child {
+  margin-bottom: 0;
+}
+
+.yoyo-about-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.yoyo-about-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: var(--yoyo-primary);
+  font-size: var(--yoyo-text-sm);
+  font-weight: 500;
+  transition: transform var(--yoyo-transition-fast);
+}
+
+.yoyo-about-link:hover {
+  transform: translateX(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yoyo-about-link:hover {
+    transform: none;
+  }
+}

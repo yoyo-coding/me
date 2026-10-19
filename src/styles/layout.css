@@ -1,0 +1,205 @@
+/* ---- 全屏波浪背景（模仿 thinkreally114.github.io/website） ---- */
+.yoyo-wave-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body > header,
+body > main,
+body > footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   全局布局：常驻导航栏 + 页脚（对应设计稿 project-shell.html）
+   ============================================ */
+
+/* ---- Navbar ---- */
+.yoyo-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--yoyo-nav-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--yoyo-nav-border);
+  transition: background var(--yoyo-transition-normal), border-color var(--yoyo-transition-normal);
+}
+
+.yoyo-nav-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.yoyo-nav-logo {
+  text-decoration: none;
+  color: var(--yoyo-foreground);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.yoyo-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.yoyo-nav-link {
+  text-decoration: none;
+  color: var(--yoyo-muted-foreground);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: var(--yoyo-radius-small);
+  transition: color var(--yoyo-transition-fast), background var(--yoyo-transition-fast);
+}
+
+.yoyo-nav-link:hover {
+  color: var(--yoyo-foreground);
+  background: var(--yoyo-muted);
+}
+
+.yoyo-nav-link[data-active="true"] {
+  color: var(--yoyo-primary);
+  font-weight: 600;
+}
+
+.yoyo-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.yoyo-nav-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  color: var(--yoyo-muted-foreground);
+  border-radius: var(--yoyo-radius-small);
+  cursor: pointer;
+  transition: color var(--yoyo-transition-fast), background var(--yoyo-transition-fast);
+}
+
+.yoyo-nav-menu-btn:hover {
+  color: var(--yoyo-foreground);
+  background: var(--yoyo-muted);
+}
+
+.yoyo-nav-mobile {
+  display: none;
+  flex-direction: column;
+  padding: 8px 24px 16px;
+  gap: 2px;
+  border-top: 1px solid var(--yoyo-nav-border);
+}
+
+.yoyo-nav-mobile-link {
+  text-decoration: none;
+  color: var(--yoyo-muted-foreground);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px 12px;
+  border-radius: var(--yoyo-radius-small);
+  transition: color var(--yoyo-transition-fast), background var(--yoyo-transition-fast);
+}
+
+.yoyo-nav-mobile-link:hover {
+  color: var(--yoyo-foreground);
+  background: var(--yoyo-muted);
+}
+
+.yoyo-nav-mobile-link[data-active="true"] {
+  color: var(--yoyo-primary);
+}
+
+/* 移动端折叠 */
+@media (max-width: 768px) {
+  .yoyo-nav-links {
+    display: none;
+  }
+
+  .yoyo-nav-menu-btn {
+    display: flex;
+  }
+
+  .yoyo-nav-mobile[hidden] {
+    display: none;
+  }
+
+  .yoyo-nav-mobile:not([hidden]) {
+    display: flex;
+  }
+}
+
+/* ---- Footer ---- */
+.yoyo-footer {
+  border-top: 1px solid var(--yoyo-border);
+  padding: 32px 24px;
+  margin-top: 96px;
+}
+
+.yoyo-footer-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.yoyo-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.yoyo-footer-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--yoyo-foreground);
+}
+
+.yoyo-footer-copy {
+  font-size: 13px;
+  color: var(--yoyo-muted-foreground);
+}
+
+.yoyo-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.yoyo-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: var(--yoyo-muted-foreground);
+  font-size: 13px;
+  transition: color var(--yoyo-transition-fast);
+}
+
+.yoyo-footer-link:hover {
+  color: var(--yoyo-foreground);
+}
